@@ -55,3 +55,17 @@ Abrir index.html desde un navegador web.
 Navegar por las diferentes secciones del restaurante.
 
 No es necesario instalar dependencias ni configurar un servidor para visualizar la página localmente.
+
+- Objetivo académico
+
+Demostrar la aplicación práctica de los conocimientos adquiridos en desarrollo web mediante la creación de una página funcional, organizada e interactiva, integrando estructura, diseño, programación y principios básicos de experiencia de usuario.
+
+- Cómo ejecutar el proyecto
+
+Descargar o clonar el repositorio desde GitHub.
+
+Extraer los archivos si se descargó como ZIP.
+
+Abrir index.html desde un navegador web.
+
+Navegar por las diferentes secciones del restaurante.
