@@ -44,28 +44,16 @@ Generación de mensajes con los productos seleccionados y la modalidad del pedid
 
 Formulario interactivo para ingresar datos personales, fecha, hora y cantidad de comensales. La solicitud se prepara para enviarse por WhatsApp y queda sujeta a confirmación.
 
-- Cómo ejecutar el proyecto
-
-Descargar o clonar el repositorio desde GitHub.
-
-Extraer los archivos si se descargó como ZIP.
-
-Abrir index.html desde un navegador web.
-
-Navegar por las diferentes secciones del restaurante.
-
-No es necesario instalar dependencias ni configurar un servidor para visualizar la página localmente.
-
 - Objetivo académico
 
 Demostrar la aplicación práctica de los conocimientos adquiridos en desarrollo web mediante la creación de una página funcional, organizada e interactiva, integrando estructura, diseño, programación y principios básicos de experiencia de usuario.
 
 - Cómo ejecutar el proyecto
 
-Descargar o clonar el repositorio desde GitHub.
+Descargar el archivo ZIP.
 
-Extraer los archivos si se descargó como ZIP.
+Extraer los archivos.
 
-Abrir index.html desde un navegador web.
+Abrir la carpeta en VsCode.
 
-Navegar por las diferentes secciones del restaurante.
+Es necesario contar con la extension "Live Preview", para poder visualizar la pagina correctamente con todos sus elementos y funciones.
