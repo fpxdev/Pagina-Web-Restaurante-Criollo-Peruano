@@ -1,4 +1,4 @@
-# Sazón-de-Barrio-Restaurante-Criollo-Peruano-Pagina-Web
+# Pagina-WebSazón-Restaurante-Criollo-Peruano
 
 Sazón de Barrio es un proyecto de desarrollo web que presenta una plataforma interactiva para un restaurante especializado en gastronomía criolla peruana. Su objetivo es ofrecer a los usuarios una experiencia moderna, intuitiva y accesible para explorar platos tradicionales, consultar promociones, realizar solicitudes de pedidos y gestionar solicitudes de reservas.
 
