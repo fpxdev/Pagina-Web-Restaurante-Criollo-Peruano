@@ -1,0 +1,2285 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="#9e1b32" name="theme-color">
+    <meta content="Sazón de Barrio: comida criolla peruana, carta, pedidos y solicitudes de reserva en el corazón de Lima." name="description">
+    <title>Sazón de Barrio | Tradición criolla peruana</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+      /* ===== IDENTIDAD DE MARCA (colores originales del HTML) ===== */
+
+      :root {
+        --rojo: #9e1b32;
+        --crema: #f3ebd9;
+        --marron: #8c6239;
+        --oscuro: #603d1f;
+        --arena: #d3a479;
+        --coral: #d87b67;
+        --blanco: #fffaf1;
+        --linea: rgba(96,61,31,.16);
+        --sombra: 0 18px 50px rgba(96,61,31,.12);
+        --radio: 22px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--crema);
+        color: var(--oscuro);
+        font-family: 'DM Sans',Verdana,sans-serif;
+        line-height: 1.6;
+      }
+
+      body.lock {
+        overflow: hidden;
+      }
+
+      button,input,select,textarea {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
+        outline: 3px solid var(--coral);
+        outline-offset: 3px;
+      }
+
+      h1,h2,h3,h4 {
+        font-family: 'Playfair Display',Georgia,serif;
+        line-height: 1.17;
+        margin: 0;
+      }
+
+      p {
+        margin: .6rem 0 1rem;
+      }
+
+      .container {
+        width: min(1200px,calc(100% - 40px));
+        margin-inline: auto;
+      }
+
+      .eyebrow {
+        font-size: .76rem;
+        font-weight: 800;
+        letter-spacing: .21em;
+        text-transform: uppercase;
+        color: var(--rojo);
+      }
+
+      .section-heading {
+        max-width: 740px;
+        margin: 0 auto 34px;
+        text-align: center;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(2.1rem,4vw,3.7rem);
+        margin: 9px 0 15px;
+      }
+
+      .section-heading p {
+        color: var(--marron);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        border: 1px solid var(--linea);
+        padding: 6px 13px;
+        border-radius: 99px;
+        font-size: .74rem;
+        font-weight: 700;
+        letter-spacing: .05em;
+      }
+
+      .btn {
+        border: 0;
+        border-radius: 99px;
+        padding: 13px 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-weight: 800;
+        transition: transform .2s,background .2s,box-shadow .2s;
+        white-space: nowrap;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(96,61,31,.15);
+      }
+
+      .btn-primary {
+        background: var(--rojo);
+        color: var(--blanco);
+      }
+
+      .btn-secondary {
+        background: var(--coral);
+        color: var(--blanco);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--rojo);
+        color: var(--rojo);
+      }
+
+      .btn-soft {
+        background: var(--blanco);
+        color: var(--rojo);
+      }
+
+      .btn:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+      }
+
+      .topline {
+        background: var(--rojo);
+        color: var(--blanco);
+        font-size: .76rem;
+        text-align: center;
+        padding: 7px 12px;
+        letter-spacing: .06em;
+      }
+
+      .site-header {
+        background: rgba(243,235,217,.97);
+        border-bottom: 1px solid var(--linea);
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        backdrop-filter: blur(16px);
+      }
+
+      .header-row {
+        min-height: 90px;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        flex-shrink: 0;
+      }
+
+      .brand img {
+        width: 67px;
+        height: 67px;
+        object-fit: contain;
+      }
+
+      .brand strong {
+        display: block;
+        font: 700 1.23rem 'Playfair Display',Georgia,serif;
+        color: var(--rojo);
+        line-height: 1.12;
+      }
+
+      .brand small {
+        font-size: .61rem;
+        letter-spacing: .11em;
+        text-transform: uppercase;
+        color: var(--marron);
+      }
+
+      .nav {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: clamp(8px,1.6vw,23px);
+      }
+
+      .nav-btn {
+        background: none;
+        border: 0;
+        border-bottom: 2px solid transparent;
+        padding: 12px 0 10px;
+        font-size: .66rem;
+        font-weight: 800;
+        letter-spacing: .085em;
+        color: var(--oscuro);
+        text-transform: uppercase;
+        transition: color .2s,border-color .2s;
+      }
+
+      .nav-btn:hover,.nav-btn.active {
+        color: var(--rojo);
+        border-bottom-color: var(--rojo);
+      }
+
+      .cart-trigger {
+        position: relative;
+        border: 1px solid var(--linea);
+        background: var(--blanco);
+        border-radius: 50%;
+        height: 44px;
+        width: 44px;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .cart-count {
+        position: absolute;
+        right: -6px;
+        top: -8px;
+        background: var(--rojo);
+        color: white;
+        border-radius: 30px;
+        min-width: 20px;
+        padding: 1px 5px;
+        font-size: .65rem;
+        font-weight: 800;
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: 0;
+        font-size: 1.45rem;
+        color: var(--rojo);
+      }
+
+      .view {
+        display: none;
+        animation: rise .38s both;
+        min-height: 55vh;
+      }
+
+      .view.active {
+        display: block;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== INICIO ===== */
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(105deg,rgba(45,25,14,.87) 2%,rgba(45,25,14,.59) 53%,rgba(45,25,14,.25)),url('imagenes/portada.webp') center/cover;
+        min-height: 570px;
+        display: flex;
+        align-items: center;
+        color: var(--blanco);
+      }
+
+      .hero:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(0deg,rgba(70,25,20,.22),transparent);
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        padding: 90px 0;
+        max-width: 1200px;
+      }
+
+      .hero .eyebrow {
+        color: #f3d7bd;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.3rem,7vw,6rem);
+        max-width: 780px;
+        margin: 18px 0 20px;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: #f2c7a2;
+      }
+
+      .hero p {
+        max-width: 580px;
+        color: #f5e5d4;
+        font-size: 1.13rem;
+        margin-bottom: 29px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .hero-note {
+        margin-top: 48px;
+        display: flex;
+        gap: 23px;
+        flex-wrap: wrap;
+        font-size: .85rem;
+        color: #f3e5d5;
+      }
+
+      .hero-note span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .story-section,.menu-section,.offers-section,.booking-section,.location-section {
+        padding: 72px 0 90px;
+      }
+
+      .story-grid {
+        display: grid;
+        grid-template-columns: 1.05fr .95fr;
+        align-items: center;
+        gap: 65px;
+      }
+
+      .story-visual {
+        position: relative;
+        min-height: 430px;
+        border-radius: var(--radio);
+        background: linear-gradient(135deg,rgba(158,27,50,.14),rgba(211,164,121,.65)),url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=85') center/cover;
+        box-shadow: var(--sombra);
+      }
+
+      .story-stamp {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background: var(--rojo);
+        color: var(--blanco);
+        border: 7px solid var(--crema);
+        border-radius: 50%;
+        width: 146px;
+        height: 146px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-family: Georgia,serif;
+        line-height: 1.3;
+        transform: rotate(-9deg);
+      }
+
+      .story-copy h2 {
+        font-size: clamp(2.1rem,4vw,3.5rem);
+        margin: 15px 0 22px;
+      }
+
+      .story-copy p {
+        color: var(--marron);
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 16px;
+        margin-top: 29px;
+      }
+
+      .feature {
+        padding: 15px 12px;
+        background: rgba(255,250,241,.7);
+        border: 1px solid var(--linea);
+        border-radius: 16px;
+        text-align: center;
+      }
+
+      .feature b {
+        display: block;
+        color: var(--rojo);
+        font-size: 1.3rem;
+      }
+
+      .feature span {
+        font-size: .74rem;
+        font-weight: 700;
+      }
+
+      .featured-wrap {
+        background: #eadcc6;
+        padding: 75px 0;
+      }
+
+      .featured-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 26px;
+      }
+
+      .featured-head h2 {
+        font-size: clamp(2rem,3.5vw,3rem);
+      }
+
+      /* ===== CARTA ===== */
+
+      .menu-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: 0 0 28px;
+      }
+
+      .filters {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+      }
+
+      .filter {
+        background: transparent;
+        border: 1px solid var(--linea);
+        padding: 10px 17px;
+        border-radius: 99px;
+        color: var(--oscuro);
+        font-size: .84rem;
+        font-weight: 800;
+      }
+
+      .filter.active,.filter:hover {
+        background: var(--rojo);
+        color: white;
+        border-color: var(--rojo);
+      }
+
+      .search {
+        border: 1px solid var(--linea);
+        border-radius: 50px;
+        padding: 12px 18px;
+        background: var(--blanco);
+        min-width: 220px;
+        max-width: 100%;
+        color: var(--oscuro);
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3,minmax(0,1fr));
+        gap: 24px;
+      }
+
+      .food-card {
+        background: var(--blanco);
+        border: 1px solid var(--linea);
+        border-radius: var(--radio);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform .2s,box-shadow .2s;
+      }
+
+      .food-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--sombra);
+      }
+
+      .food-photo {
+        height: 214px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg,#d3a479,#8c6239);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .food-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform .4s;
+      }
+
+      .food-card:hover .food-photo img {
+        transform: scale(1.05);
+      }
+
+      .food-photo .fallback {
+        position: absolute;
+        font-size: 4rem;
+        z-index: 0;
+      }
+
+      .food-photo img {
+        position: relative;
+        z-index: 1;
+      }
+
+      .food-photo img.error {
+        display: none;
+      }
+
+      .food-tag {
+        position: absolute;
+        z-index: 2;
+        top: 14px;
+        left: 14px;
+        background: var(--blanco);
+        border-radius: 99px;
+        padding: 5px 11px;
+        font-size: .69rem;
+        font-weight: 800;
+        color: var(--rojo);
+      }
+
+      .food-body {
+        padding: 23px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .food-category {
+        font-size: .67rem;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--rojo);
+      }
+
+      .food-card h3 {
+        font-size: 1.42rem;
+        margin: 8px 0;
+      }
+
+      .food-card p {
+        font-size: .87rem;
+        line-height: 1.55;
+        color: var(--marron);
+        flex: 1;
+        margin: 0 0 22px;
+      }
+
+      .food-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .price {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--rojo);
+      }
+
+      .food-bottom .btn {
+        padding: 10px 15px;
+        font-size: .8rem;
+      }
+
+      .no-results {
+        padding: 40px;
+        text-align: center;
+        background: var(--blanco);
+        border-radius: var(--radio);
+        grid-column: 1/-1;
+      }
+
+      .menu-intro {
+        background: var(--rojo);
+        color: var(--blanco);
+        padding: 45px 0;
+        text-align: center;
+      }
+
+      .menu-intro h1 {
+        font-size: clamp(2.2rem,4vw,3.6rem);
+        margin: 7px 0;
+      }
+
+      .menu-intro p {
+        color: #f2d9cd;
+        margin: 0;
+      }
+
+      .menu-intro .eyebrow {
+        color: #f2bd9d;
+      }
+
+      .menu-footnote {
+        margin-top: 26px;
+        font-size: .77rem;
+        color: var(--marron);
+        text-align: center;
+      }
+
+      /* ===== PROMOCIONES ===== */
+
+      /* Dos tarjetas de igual anchura. Las fotografías de cada combo comparten
+             toda la anchura superior, a diferencia del recorte lateral anterior. */
+
+      .offer-grid {
+        display: grid;
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 25px;
+        align-items: stretch;
+      }
+
+      .offer {
+        background: var(--blanco);
+        border: 1px solid var(--linea);
+        border-radius: var(--radio);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        transition: transform .25s,box-shadow .25s;
+      }
+
+      .offer:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--sombra);
+      }
+
+      /* Cada preparación tiene su propia fotografía, exactamente el mismo espacio
+             dentro de la promoción: 2 columnas (Dúo) o 3 (Antojo). */
+
+      .offer-gallery {
+        display: grid;
+        gap: 3px;
+        height: 245px;
+        background: var(--arena);
+      }
+
+      .offer-gallery--two {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      .offer-gallery--three {
+        grid-template-columns: repeat(3,minmax(0,1fr));
+      }
+
+      .offer-photo {
+        min-width: 0;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        background: linear-gradient(130deg,var(--arena),var(--marron));
+      }
+
+      .offer-photo img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform .4s;
+      }
+
+      .offer-photo:hover img {
+        transform: scale(1.05);
+      }
+
+      .offer-photo img.error {
+        display: none;
+      }
+
+      .offer-photo-fallback {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: 3rem;
+      }
+
+      .offer-photo:after {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        pointer-events: none;
+        inset: 45% 0 0;
+        background: linear-gradient(to bottom,transparent,rgba(42,19,13,.85));
+      }
+
+      .offer-photo figcaption {
+        position: absolute;
+        z-index: 3;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 22px 9px 12px;
+        color: #fffaf1;
+        font-weight: 800;
+        font-size: .79rem;
+        line-height: 1.25;
+        text-align: center;
+        text-shadow: 0 1px 5px rgba(0,0,0,.4);
+      }
+
+      .offer-count {
+        display: inline-block;
+        white-space: nowrap;
+        background: var(--crema);
+        color: var(--rojo);
+        font-size: .69rem;
+        line-height: 1.35;
+        border-radius: 99px;
+        padding: 3px 7px;
+        margin-right: 3px;
+        text-shadow: none;
+      }
+
+      .offer-content {
+        padding: 27px 30px 30px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .offer h3 {
+        font-size: 1.8rem;
+        margin: 12px 0;
+      }
+
+      .offer p {
+        color: var(--marron);
+        font-size: .89rem;
+        flex: 1;
+        margin-bottom: 16px;
+      }
+
+      .offer .price {
+        margin: 0 0 17px;
+      }
+
+      .notice {
+        margin-top: 28px;
+        background: #eaddc7;
+        border-radius: 16px;
+        padding: 16px 22px;
+        color: var(--oscuro);
+        font-size: .9rem;
+      }
+
+      /* ===== RESERVAS ===== */
+
+      .booking-grid {
+        display: grid;
+        grid-template-columns: 1.1fr .9fr;
+        gap: 29px;
+      }
+
+      .panel {
+        background: var(--blanco);
+        border: 1px solid var(--linea);
+        border-radius: var(--radio);
+        padding: 35px;
+        box-shadow: 0 8px 26px rgba(96,61,31,.05);
+      }
+
+      .panel h3 {
+        font-size: 1.75rem;
+        margin: 7px 0 14px;
+      }
+
+      .panel>p {
+        font-size: .89rem;
+        color: var(--marron);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 16px;
+        margin: 25px 0;
+      }
+
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .form-field.wide {
+        grid-column: 1/-1;
+      }
+
+      .form-field label {
+        font-size: .79rem;
+        font-weight: 800;
+        color: var(--oscuro);
+      }
+
+      .form-field input,.form-field select,.form-field textarea {
+        width: 100%;
+        padding: 12px 13px;
+        border-radius: 11px;
+        border: 1px solid #d5bca0;
+        background: #fffdfa;
+        color: var(--oscuro);
+      }
+
+      .form-field textarea {
+        resize: vertical;
+        min-height: 98px;
+      }
+
+      .panel .btn {
+        max-width: 100%;
+      }
+
+      .booking-note {
+        font-size: .76rem;
+        color: var(--marron);
+        margin-top: 14px;
+      }
+
+      .side-benefits {
+        display: grid;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .benefit {
+        border: 1px solid var(--linea);
+        border-radius: 15px;
+        padding: 16px;
+        background: #f8f0e3;
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+      }
+
+      .benefit-icon {
+        font-size: 1.5rem;
+      }
+
+      .benefit b {
+        display: block;
+        font-size: .96rem;
+      }
+
+      .benefit small {
+        display: block;
+        color: var(--marron);
+        line-height: 1.6;
+      }
+
+      .delivery-choices {
+        display: flex;
+        gap: 10px;
+        margin: 22px 0;
+      }
+
+      .choice {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid var(--linea);
+        background: #fff8eb;
+        border-radius: 12px;
+        font-weight: 800;
+      }
+
+      .choice.active {
+        color: white;
+        background: var(--rojo);
+        border-color: var(--rojo);
+      }
+
+      /* ===== CONTACTO ===== */
+
+      .location-grid {
+        display: grid;
+        grid-template-columns: .85fr 1.15fr;
+        gap: 27px;
+      }
+
+      .info-list {
+        display: grid;
+        gap: 21px;
+        margin-top: 24px;
+      }
+
+      .info-item {
+        display: flex;
+        gap: 14px;
+      }
+
+      .info-icon {
+        height: 42px;
+        width: 42px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        background: #f4e5d3;
+        border-radius: 12px;
+        font-size: 1.25rem;
+      }
+
+      .info-item b {
+        display: block;
+      }
+
+      .info-item span,.info-item a {
+        font-size: .9rem;
+        color: var(--marron);
+      }
+
+      .map-frame {
+        height: 450px;
+        border-radius: var(--radio);
+        overflow: hidden;
+        border: 1px solid var(--linea);
+        box-shadow: var(--sombra);
+      }
+
+      .map-frame iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .hours-grid {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 19px;
+        margin-top: 34px;
+      }
+
+      .hours {
+        background: var(--blanco);
+        padding: 24px;
+        border-radius: 17px;
+        border: 1px solid var(--linea);
+      }
+
+      .hours .symbol {
+        font-size: 1.7rem;
+      }
+
+      .hours h3 {
+        font-size: 1.2rem;
+        margin: 8px 0;
+      }
+
+      .hours p {
+        font-size: .85rem;
+        color: var(--marron);
+        margin: 0;
+      }
+
+      .hours strong {
+        display: block;
+        color: var(--rojo);
+        margin-top: 9px;
+        font-size: .94rem;
+      }
+
+      /* ===== FOOTER, CARRITO, MODAL ===== */
+
+      footer {
+        background: var(--oscuro);
+        color: var(--crema);
+        padding: 48px 0 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr;
+        gap: 35px;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+      }
+
+      .footer-brand img {
+        width: 80px;
+      }
+
+      .footer-brand strong {
+        font: 700 1.6rem 'Playfair Display',Georgia,serif;
+      }
+
+      .footer-grid p,.footer-grid a,.footer-grid small {
+        font-size: .84rem;
+        color: #e4cbb2;
+      }
+
+      .footer-grid h4 {
+        font-size: 1rem;
+        margin: 0 0 14px;
+        color: var(--crema);
+      }
+
+      .footer-links {
+        display: grid;
+        gap: 8px;
+      }
+
+      .footer-links button {
+        background: none;
+        border: 0;
+        text-align: left;
+        color: #e4cbb2;
+        padding: 0;
+        font-size: .84rem;
+        cursor: pointer;
+      }
+
+      .socials {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 17px;
+      }
+
+      .socials a {
+        border: 1px solid rgba(243,235,217,.25);
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        color: var(--crema);
+        font-weight: 800;
+        font-size: .75rem;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(243,235,217,.2);
+        margin-top: 30px;
+        padding-top: 18px;
+        font-size: .75rem;
+        color: #d8bba0;
+        text-align: center;
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(34,18,10,.56);
+        z-index: 60;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .25s,visibility .25s;
+      }
+
+      .overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .drawer {
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: min(440px,100%);
+        background: var(--crema);
+        z-index: 61;
+        transform: translateX(105%);
+        transition: transform .27s;
+        display: flex;
+        flex-direction: column;
+        box-shadow: -14px 0 45px rgba(0,0,0,.2);
+      }
+
+      .drawer.show {
+        transform: translateX(0);
+      }
+
+      .drawer-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px;
+        border-bottom: 1px solid var(--linea);
+      }
+
+      .drawer-head h2 {
+        font-size: 1.7rem;
+      }
+
+      .icon-btn {
+        border: 0;
+        background: var(--blanco);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+        color: var(--oscuro);
+      }
+
+      .cart-items {
+        overflow: auto;
+        padding: 18px 24px;
+        flex: 1;
+      }
+
+      .cart-item {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 9px;
+        border-bottom: 1px solid var(--linea);
+        padding: 15px 0;
+      }
+
+      .cart-item strong {
+        font-size: .9rem;
+      }
+
+      .cart-item small {
+        display: block;
+        color: var(--marron);
+      }
+
+      .qty {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .qty button {
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        background: var(--blanco);
+        border: 1px solid var(--linea);
+        font-weight: 800;
+      }
+
+      .drawer-bottom {
+        padding: 22px 24px;
+        border-top: 1px solid var(--linea);
+        background: var(--blanco);
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 9px 0;
+        font-weight: 800;
+      }
+
+      .summary-row strong {
+        font-size: 1.4rem;
+        color: var(--rojo);
+      }
+
+      .drawer-bottom .btn {
+        width: 100%;
+        margin-top: 14px;
+      }
+
+      .empty-cart {
+        text-align: center;
+        padding: 45px 10px;
+        color: var(--marron);
+      }
+
+      .empty-cart div {
+        font-size: 3rem;
+      }
+
+      .mode-switch {
+        display: flex;
+        gap: 8px;
+      }
+
+      .mode-switch label {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: .84rem;
+        font-weight: 800;
+      }
+
+      .mode-switch input {
+        accent-color: var(--rojo);
+      }
+
+      .delivery-address {
+        display: block;
+        width: 100%;
+        margin-top: 12px;
+        padding: 12px;
+        border: 1px solid var(--linea);
+        border-radius: 10px;
+        background: var(--crema);
+      }
+
+      .modal {
+        position: fixed;
+        z-index: 65;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-45%) scale(.97);
+        width: min(490px,calc(100% - 35px));
+        background: var(--blanco);
+        border-radius: var(--radio);
+        padding: 35px;
+        opacity: 0;
+        visibility: hidden;
+        transition: .23s;
+        box-shadow: var(--sombra);
+        text-align: center;
+      }
+
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%,-50%) scale(1);
+      }
+
+      .modal .symbol {
+        font-size: 3rem;
+      }
+
+      .modal h2 {
+        font-size: 2rem;
+        margin: 10px 0;
+      }
+
+      .modal p {
+        color: var(--marron);
+        font-size: .92rem;
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 23px;
+      }
+
+      .toast {
+        position: fixed;
+        z-index: 80;
+        bottom: 24px;
+        left: 50%;
+        transform: translate(-50%,20px);
+        background: var(--oscuro);
+        color: white;
+        padding: 12px 21px;
+        border-radius: 99px;
+        box-shadow: var(--sombra);
+        opacity: 0;
+        visibility: hidden;
+        transition: .2s;
+        max-width: 90%;
+        text-align: center;
+        font-size: .86rem;
+      }
+
+      .toast.show {
+        transform: translate(-50%,0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @media(max-width:1120px) {
+        .header-row {
+          gap: 12px;
+        }
+
+        .brand small {
+          display: none;
+        }
+
+        .nav {
+          gap: 10px;
+        }
+
+        .nav-btn {
+          font-size: .61rem;
+        }
+
+        .story-grid {
+          gap: 35px;
+        }
+      }
+
+      @media(max-width:850px) {
+        .mobile-toggle {
+          display: block;
+          margin-left: auto;
+        }
+
+        .nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--crema);
+          padding: 15px 22px 22px;
+          border-bottom: 1px solid var(--linea);
+          box-shadow: var(--sombra);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+        }
+
+        .nav.open {
+          display: flex;
+        }
+
+        .nav-btn {
+          text-align: left;
+          padding: 14px;
+          font-size: .82rem;
+        }
+
+        .header-row {
+          min-height: 75px;
+        }
+
+        .brand img {
+          width: 55px;
+          height: 55px;
+        }
+
+        .story-grid,.booking-grid,.location-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .story-visual {
+          min-height: 310px;
+        }
+
+        .menu-grid {
+          grid-template-columns: repeat(2,minmax(0,1fr));
+        }
+
+        .offer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .offer-gallery {
+          height: 270px;
+        }
+
+        .hours-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .footer-grid>div:first-child {
+          grid-column: 1/-1;
+        }
+
+        .hero {
+          min-height: 500px;
+        }
+      }
+
+      @media(max-width:560px) {
+        .container {
+          width: min(100% - 28px,1200px);
+        }
+
+        .topline {
+          font-size: .66rem;
+        }
+
+        .brand strong {
+          font-size: 1.05rem;
+        }
+
+        .hero {
+          min-height: 540px;
+        }
+
+        .hero-inner {
+          padding: 70px 0;
+        }
+
+        .hero h1 {
+          font-size: 3.1rem;
+        }
+
+        .hero p {
+          font-size: .99rem;
+        }
+
+        .hero-note {
+          gap: 10px;
+          flex-direction: column;
+          margin-top: 30px;
+        }
+
+        .story-section,.menu-section,.offers-section,.booking-section,.location-section {
+          padding: 48px 0 65px;
+        }
+
+        .story-stamp {
+          right: -4px;
+          width: 112px;
+          height: 112px;
+          font-size: .8rem;
+        }
+
+        .features {
+          gap: 6px;
+        }
+
+        .feature {
+          padding: 12px 5px;
+        }
+
+        .feature span {
+          font-size: .64rem;
+        }
+
+        .menu-grid {
+          grid-template-columns: 1fr;
+          gap: 17px;
+        }
+
+        .food-photo {
+          height: 230px;
+        }
+
+        .offer-gallery {
+          height: 190px;
+        }
+
+        .offer-photo figcaption {
+          font-size: .67rem;
+          padding: 18px 5px 9px;
+        }
+
+        .offer-count {
+          font-size: .62rem;
+          padding: 2px 5px;
+          margin-right: 2px;
+        }
+
+        .offer-content {
+          padding: 23px;
+        }
+
+        .featured-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .panel {
+          padding: 23px;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .form-field.wide {
+          grid-column: auto;
+        }
+
+        .map-frame {
+          height: 320px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-grid>div:first-child {
+          grid-column: auto;
+        }
+
+        .hero-actions .btn {
+          flex: 1;
+        }
+
+        .section-heading h2 {
+          font-size: 2.2rem;
+        }
+      }
+
+      @media(max-width:390px) {
+        .offer-gallery {
+          height: 170px;
+        }
+
+        .offer-photo figcaption {
+          font-size: .62rem;
+        }
+
+        .offer h3 {
+          font-size: 1.55rem;
+        }
+      }
+
+      @media(prefers-reduced-motion:reduce) {
+        *,*:before,*:after {
+          animation-duration: .01ms!important;
+          transition-duration: .01ms!important;
+          scroll-behavior: auto!important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topline">🇵🇪 EL SABOR CRIOLLO DE SIEMPRE, EN EL CORAZÓN DE LIMA</div>
+    <header class="site-header">
+      <div class="container header-row">
+        <a aria-label="Sazón de Barrio, ir a inicio" class="brand" data-view="inicio" href="#inicio"><img alt="Logo de Sazón de Barrio" src="Logo_Restaurante.png"/><span><strong>Sazón de Barrio</strong><small>Comida criolla peruana</small></span></a>
+        <button aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menú" class="mobile-toggle" id="mobileToggle">☰</button>
+        <nav aria-label="Navegación principal" class="nav" id="mainNav">
+          <button class="nav-btn active" data-view="inicio">Inicio / Nosotros</button>
+          <button class="nav-btn" data-view="carta">La Carta</button>
+          <button class="nav-btn" data-view="promociones">Promociones</button>
+          <button class="nav-btn" data-view="reservas">Reservas y Pedidos</button>
+          <button class="nav-btn" data-view="contacto">Ubicación y Contacto</button>
+        </nav>
+        <button aria-label="Abrir carrito" class="cart-trigger" id="cartTrigger">🛒<span class="cart-count" id="cartCount">0</span></button>
+      </div>
+    </header>
+    <main id="mainContent">
+      <!-- Cada .view es una vista SPA, sin recarga de página -->
+      <!-- ===== 01. INICIO / NOSOTROS ===== -->
+      <section aria-labelledby="heroTitle" class="view active" id="inicio">
+        <div class="hero">
+          <div class="container hero-inner">
+            <span class="eyebrow">Tradición • Familia • Sazón</span>
+            <h1 id="heroTitle">El verdadero <em>sabor criollo</em> se comparte.</h1>
+            <p>Recetas que pasan de generación en generación, ingredientes frescos y el cariño de nuestra cocina peruana. Aquí siempre hay un lugar para ti.</p>
+            <div class="hero-actions">
+              <button class="btn btn-secondary" data-view="carta">Explorar la carta ↗</button>
+              <button class="btn btn-soft" data-view="reservas">Reserva tu mesa</button>
+            </div>
+            <div class="hero-note">
+              <span>✦ Cocina peruana de tradición</span>
+              <span>✦ En el corazón de Lima</span>
+              <span>✦ Hecho con cariño de barrio</span>
+            </div>
+          </div>
+        </div>
+        <div class="story-section container">
+          <div class="story-grid">
+            <div aria-label="Ambiente cálido de un restaurante" class="story-visual" role="img">
+              <div class="story-stamp">Con alma<br/>peruana<br/>♥</div>
+            </div>
+            <div class="story-copy">
+              <span class="eyebrow">Nuestra historia</span>
+              <h2>Una mesa, mil recuerdos.</h2>
+              <p>En <strong>Sazón de Barrio</strong> celebramos la comida criolla peruana de toda la vida: esas recetas familiares que reúnen a todos alrededor de una buena mesa.</p>
+              <p>Preparamos cada plato con ingredientes frescos y el sabor casero que reconoces desde el primer bocado. Del ceviche al lomo saltado, del ají de gallina a nuestros anticuchos: ¡bienvenidos a su casa!</p>
+              <div class="features">
+                <div class="feature">
+                  <b>♨</b>
+                  <span>Recetas caseras</span>
+                </div>
+                <div class="feature">
+                  <b>✿</b>
+                  <span>Tradición limeña</span>
+                </div>
+                <div class="feature">
+                  <b>♥</b>
+                  <span>Atención cálida</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="featured-wrap">
+          <div class="container">
+            <div class="featured-head">
+              <div>
+                <span class="eyebrow">Favoritos de la casa</span>
+                <h2>Sabores que enamoran</h2>
+              </div>
+              <button class="btn btn-outline" data-view="carta">Ver carta completa ↗</button>
+            </div>
+            <div class="menu-grid" id="featuredGrid"></div>
+          </div>
+        </div>
+      </section>
+      <!-- ===== 02. CARTA DIGITAL ===== -->
+      <section aria-labelledby="cartaTitle" class="view" id="carta">
+        <div class="menu-intro">
+          <div class="container">
+            <span class="eyebrow">De nuestra cocina a tu mesa</span>
+            <h1 id="cartaTitle">Nuestra carta criolla</h1>
+            <p>Clásicos para disfrutar, compartir y volver por más.</p>
+          </div>
+        </div>
+        <div class="menu-section container">
+          <div class="menu-toolbar">
+            <div aria-label="Filtrar por categoría" class="filters" id="filters" role="group">
+              <button class="filter active" data-filter="todos">Todos</button>
+              <button class="filter" data-filter="entradas">Entradas</button>
+              <button class="filter" data-filter="fondos">Fondos</button>
+              <button class="filter" data-filter="parrilla">Parrilla</button>
+              <button class="filter" data-filter="postres">Postres</button>
+              <button class="filter" data-filter="bebidas">Bebidas</button>
+            </div>
+            <input aria-label="Buscar platos" class="search" id="menuSearch" placeholder="Buscar un plato..." type="search">
+          </div>
+          <div class="menu-grid" id="menuGrid"></div>
+          <p class="menu-footnote">Los precios de los platos añadidos como ejemplo son referenciales y deben validarse antes de publicar el sitio.</p>
+        </div>
+      </section>
+      <!-- ===== 03. PROMOCIONES ===== -->
+      <section aria-labelledby="promoTitle" class="view" id="promociones">
+        <div class="offers-section container">
+          <div class="section-heading">
+            <span class="eyebrow">Momentos para compartir</span>
+            <h2 id="promoTitle">Promociones de barrio</h2>
+            <p>Combos especiales de demostración, pensados para compartir nuestro sabor.</p>
+          </div>
+          <div class="offer-grid">
+            <article class="offer">
+              <!-- DÚO CRIOLLO: 2 fotos independientes; cada una ocupa exactamente el 50%. -->
+              <div aria-label="Incluye dos lomos saltados y dos chichas moradas" class="offer-gallery offer-gallery--two">
+                <figure class="offer-photo">
+                  <span aria-hidden="true" class="offer-photo-fallback">🥩</span>
+                  <img alt="Lomo saltado peruano con arroz y papas fritas" loading="lazy" onerror="this.classList.add('error')" src="imagenes/lomo.webp">
+                  <figcaption><span class="offer-count">2×</span> Lomo saltado</figcaption>
+                </figure>
+                <figure class="offer-photo">
+                  <span aria-hidden="true" class="offer-photo-fallback">🥤</span>
+                  <img alt="Vaso de chicha morada" loading="lazy" onerror="this.classList.add('error')" src="imagenes/chicha.webp">
+                  <figcaption><span class="offer-count">2×</span> Chicha morada</figcaption>
+                </figure>
+              </div>
+              <div class="offer-content">
+                <span class="pill">Combo para 2</span>
+                <h3>Dúo Criollo</h3>
+                <p>Dos lomos saltados + dos chichas moradas. Un clásico para compartir.</p>
+                <span class="price">S/ 74.00</span>
+                <button class="btn btn-primary" data-combo="duo">Agregar combo +</button>
+              </div>
+            </article>
+            <article class="offer">
+              <!-- ANTOJO LIMEÑO: cada uno de sus 3 productos tiene 1/3 de la galería. -->
+              <div aria-label="Incluye ají de gallina, suspiro a la limeña y chicha morada" class="offer-gallery offer-gallery--three">
+                <figure class="offer-photo">
+                  <span aria-hidden="true" class="offer-photo-fallback">🍛</span>
+                  <img alt="Ají de gallina con arroz y papa" loading="lazy" onerror="this.classList.add('error')" src="imagenes/aji.webp">
+                  <figcaption><span class="offer-count">1×</span> Ají de gallina</figcaption>
+                </figure>
+                <figure class="offer-photo">
+                  <span aria-hidden="true" class="offer-photo-fallback">🍮</span>
+                  <img alt="Suspiro a la limeña con merengue" loading="lazy" onerror="this.classList.add('error')" src="imagenes/suspiro.webp">
+                  <figcaption><span class="offer-count">1×</span> Suspiro a la limeña</figcaption>
+                </figure>
+                <figure class="offer-photo">
+                  <span aria-hidden="true" class="offer-photo-fallback">🥤</span>
+                  <img alt="Vaso de chicha morada" loading="lazy" onerror="this.classList.add('error')" src="imagenes/chicha.webp">
+                  <figcaption><span class="offer-count">1×</span> Chicha morada</figcaption>
+                </figure>
+              </div>
+              <div class="offer-content">
+                <span class="pill">Para darse un gusto</span>
+                <h3>Antojo Limeño</h3>
+                <p>Un ají de gallina + un suspiro a la limeña + una chicha morada.</p>
+                <span class="price">S/ 39.00</span>
+                <button class="btn btn-primary" data-combo="antojo">Agregar combo +</button>
+              </div>
+            </article>
+          </div>
+          <div class="notice">Promociones ilustrativas. Disponibilidad dependiendo del local.</div>
+        </div>
+      </section>
+      <!-- ===== 04. RESERVAS Y PEDIDOS ===== -->
+      <section aria-labelledby="reservasTitle" class="view" id="reservas">
+        <div class="booking-section container">
+          <div class="section-heading">
+            <span class="eyebrow">Te esperamos</span>
+            <h2 id="reservasTitle">Reserva o pide con nosotros</h2>
+            <p>Tu próxima experiencia criolla comienza aquí.</p>
+          </div>
+          <div class="booking-grid">
+            <div class="panel">
+              <span class="eyebrow">01 · Reserva de mesa</span>
+              <h3>Guarda un lugar en nuestra mesa</h3>
+              <p>Completa los datos y envía tu <strong>solicitud</strong> por WhatsApp. La reserva queda pendiente hasta que el restaurante confirme.</p>
+              <form id="bookingForm">
+                <div class="form-grid">
+                  <div class="form-field wide">
+                    <label for="nombre">Nombre completo *</label>
+                    <input autocomplete="name" id="nombre" minlength="3" name="nombre" placeholder="Tu nombre y apellido" required="">
+                  </div>
+                  <div class="form-field">
+                    <label for="telefono">Teléfono peruano *</label>
+                    <input id="telefono" inputmode="numeric" name="telefono" pattern="9[0-9]{8}" placeholder="9XXXXXXXX" required="" title="Ingresa un celular de 9 dígitos que empiece en 9" type="tel">
+                  </div>
+                  <div class="form-field">
+                    <label for="correo">Correo electrónico</label>
+                    <input autocomplete="email" id="correo" name="correo" placeholder="correo@ejemplo.com" type="email">
+                  </div>
+                  <div class="form-field">
+                    <label for="fecha">Fecha *</label>
+                    <input id="fecha" name="fecha" required="" type="date">
+                  </div>
+                  <div class="form-field">
+                    <label for="hora">Hora de llegada *</label>
+                    <input id="hora" max="21:30" min="12:00" name="hora" required="" step="1800" type="time">
+                  </div>
+                  <div class="form-field">
+                    <label for="comensales">Comensales *</label>
+                    <select id="comensales" name="comensales" required="">
+                      <option value="1">1 persona</option>
+                      <option selected="" value="2">2 personas</option>
+                      <option value="3">3 personas</option>
+                      <option value="4">4 personas</option>
+                      <option value="5">5 personas</option>
+                      <option value="6">6 personas</option>
+                      <option value="8 o más">8 o más</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label for="ocasion">Ocasión especial</label>
+                    <select id="ocasion" name="ocasion">
+                      <option>Ninguna en particular</option>
+                      <option>Cumpleaños</option>
+                      <option>Aniversario</option>
+                      <option>Reunión familiar</option>
+                      <option>Reunión de negocios</option>
+                    </select>
+                  </div>
+                  <div class="form-field wide">
+                    <label for="comentarios">Comentarios especiales</label>
+                    <textarea id="comentarios" maxlength="400" name="comentarios" placeholder="Alguna indicación para tu visita..."></textarea>
+                  </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Solicitar reserva por WhatsApp ↗</button>
+                <p class="booking-note">* La solicitud no garantiza disponibilidad; el restaurante debe confirmarla.</p>
+              </form>
+            </div>
+            <div>
+              <div class="panel">
+                <span class="eyebrow">02 · Pedidos en línea</span>
+                <h3>Lo mejor de nuestra cocina, a tu manera</h3>
+                <p>Elige tus platos, ajusta cantidades y envía tu pedido por WhatsApp.</p>
+                <div class="delivery-choices">
+                  <button class="choice active" data-order-mode="delivery" type="button">🛵 Delivery</button>
+                  <button class="choice" data-order-mode="recojo" type="button">🛍️ Recojo</button>
+                </div>
+                <button class="btn btn-secondary" data-view="carta">Elegir platos de la carta ↗</button>
+                <div class="side-benefits">
+                  <div class="benefit">
+                    <span class="benefit-icon">🛒</span>
+                    <div>
+                      <b>Carrito interactivo</b>
+                      <small>Suma o quita platos y consulta el subtotal antes de enviar.</small>
+                    </div>
+                  </div>
+                  <div class="benefit">
+                    <span class="benefit-icon">💬</span>
+                    <div>
+                      <b>Pedido por WhatsApp</b>
+                      <small>El mensaje incluye platos, cantidades, modalidad y total parcial.</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel" style="margin-top:23px">
+                <span class="eyebrow">También puedes explorar</span>
+                <h3>Reserva con Mesa 24/7</h3>
+                <p>Acceso a la plataforma externa. La presencia y disponibilidad de Sazón de Barrio allí no están verificadas.</p>
+                <a class="btn btn-outline" href="https://www.mesa247.pe/" rel="noopener noreferrer" target="_blank">Ir a Mesa 24/7 ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ===== 05. UBICACIÓN Y CONTACTO ===== -->
+      <section aria-labelledby="contactoTitle" class="view" id="contacto">
+        <div class="location-section container">
+          <div class="section-heading">
+            <span class="eyebrow">Visítanos</span>
+            <h2 id="contactoTitle">Estamos en el corazón de Lima</h2>
+            <p>El encuentro perfecto entre tradición, sabor y buena compañía.</p>
+          </div>
+          <div class="location-grid">
+            <div class="panel">
+              <span class="eyebrow">Nos encuentras aquí</span>
+              <h3>Siempre habrá un lugar para ti</h3>
+              <div class="info-list">
+                <div class="info-item">
+                  <span class="info-icon">📍</span>
+                  <div>
+                    <b>Dirección</b>
+                    <span>Jirón de la Unión 1024, Cercado de Lima, Lima, Perú</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <span class="info-icon">📱</span>
+                  <div>
+                    <b>Teléfono / WhatsApp</b>
+                    <a href="https://wa.me/51982492843" rel="noopener noreferrer" target="_blank">+51 982 492 843</a>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <span class="info-icon">🕐</span>
+                  <div>
+                    <b>Días de atención</b>
+                    <span>Martes a domingo · Lunes cerrado</span>
+                  </div>
+                </div>
+              </div>
+              <a class="btn btn-primary" href="https://maps.app.goo.gl/rqx5EKxwCwLHyqy89" rel="noopener noreferrer" style="margin-top:28px" target="_blank">Cómo llegar en Google Maps ↗</a>
+            </div>
+            <div class="map-frame">
+              <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Jir%C3%B3n%20de%20la%20Uni%C3%B3n%201024%2C%20Cercado%20de%20Lima%2C%20Per%C3%BA&amp;output=embed" title="Mapa de Sazón de Barrio en Cercado de Lima"></iframe>
+            </div>
+          </div>
+          <div class="hours-grid">
+            <article class="hours">
+              <div class="symbol">🍽️</div>
+              <h3>Atención en salón</h3>
+              <p>Martes a domingo</p>
+              <strong>12:00 m. – 10:00 p. m.</strong>
+            </article>
+            <article class="hours">
+              <div class="symbol">🛍️</div>
+              <h3>Recojo en tienda</h3>
+              <p>Martes a domingo</p>
+              <strong>11:30 a. m. – 10:00 p. m.</strong>
+            </article>
+            <article class="hours">
+              <div class="symbol">🛵</div>
+              <h3>Delivery</h3>
+              <p>Martes a domingo</p>
+              <strong>12:00 m. – 9:30 p. m.</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">
+              <img alt="Logo de Sazón de Barrio" src="Logo_Restaurante.png">
+              <strong>Sazón de Barrio</strong>
+            </div>
+            <p>El sabor criollo de siempre, en el corazón de Lima. Tradición en cada plato, cariño en cada mesa.</p>
+            <div aria-label="Redes sociales" class="socials">
+              <a href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank" title="Instagram (enlace genérico; configurar perfil)">IG</a>
+              <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank" title="Facebook (enlace genérico; configurar perfil)">f</a>
+              <a href="https://www.tiktok.com/" rel="noopener noreferrer" target="_blank" title="TikTok (enlace genérico; configurar perfil)">♪</a>
+              <a href="https://wa.me/51982492843" rel="noopener noreferrer" target="_blank" title="WhatsApp">WA</a>
+            </div>
+            <small>Instagram, Facebook y TikTok requieren los enlaces oficiales del restaurante.</small>
+          </div>
+          <div>
+            <h4>Explora</h4>
+            <div class="footer-links">
+              <button data-view="inicio">Nuestra historia</button>
+              <button data-view="carta">La carta</button>
+              <button data-view="promociones">Promociones</button>
+              <button data-view="reservas">Reservas y pedidos</button>
+              <button data-view="contacto">Cómo llegar</button>
+            </div>
+          </div>
+          <div>
+            <h4>Visítanos</h4>
+            <p>Jirón de la Unión 1024<br/>Cercado de Lima, Lima, Perú</p>
+            <p>WhatsApp: +51 982 492 843</p>
+            <p>Martes a domingo<br/>Salón: 12:00 m. – 10:00 p. m.</p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Sazón de Barrio. Todos los derechos reservados. · Hecho con sabor peruano ♥</div>
+      </div>
+    </footer>
+    <!-- Carrito lateral -->
+    <div aria-hidden="true" class="overlay" id="overlay"></div>
+    <aside aria-hidden="true" aria-label="Tu pedido" aria-modal="true" class="drawer" id="cartDrawer" role="dialog">
+      <div class="drawer-head">
+        <h2>Tu pedido 🛍️</h2>
+        <button aria-label="Cerrar carrito" class="icon-btn" id="cartClose">×</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="drawer-bottom">
+        <div class="mode-switch">
+          <label><input checked="" name="cartMode" type="radio" value="delivery"/> Delivery</label>
+          <label><input name="cartMode" type="radio" value="recojo"/> Recojo en local</label>
+        </div>
+        <input aria-label="Dirección de entrega" class="delivery-address" id="deliveryAddress" maxlength="180" placeholder="Dirección de entrega (obligatoria para delivery)">
+        <div class="summary-row">
+          <span>Subtotal de platos</span>
+          <strong id="cartTotal">S/ 0.00</strong>
+        </div>
+        <small style="color:var(--marron)">Costo de delivery no incluido; confirmar con el restaurante.</small>
+        <button class="btn btn-primary" id="checkoutBtn">Enviar pedido por WhatsApp ↗</button>
+      </div>
+    </aside>
+    <!-- Modal de confirmación de solicitud (NO de mesa confirmada) -->
+    <div aria-hidden="true" aria-labelledby="modalTitle" aria-modal="true" class="modal" id="bookingModal" role="dialog">
+      <div class="symbol">📩</div>
+      <h2 id="modalTitle">Solicitud preparada</h2>
+      <p id="modalMessage">Revisa tu solicitud antes de abrir WhatsApp.</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="modalCancel">Volver</button>
+        <button class="btn btn-primary" id="modalSend">Abrir WhatsApp ↗</button>
+      </div>
+    </div>
+    <div aria-live="polite" class="toast" id="toast" role="status"></div>
+    <script>
+      'use strict';
+      /* ===== DATOS DEL MENÚ =====
+         Precios iniciales del HTML original mantenidos. Los platos nuevos son ejemplos.
+         Las imágenes son ilustraciones fotográficas generadas para cada preparación, no fotografías de platos servidos por el restaurante.
+      */
+      const dishes = [
+          {
+              id: 'causa',
+              name: 'Causa Limeña',
+              cat: 'entradas',
+              group: 'Para picar / Entradas',
+              desc: 'Suave papa amarilla con limón y ají, rellena de pollo y palta.',
+              price: 18,
+              emoji: '🥔',
+              img: 'imagenes/causa.webp'
+          },
+          {
+              id: 'huancaina',
+              name: 'Papa a la Huancaína',
+              cat: 'entradas',
+              group: 'Para picar / Entradas',
+              desc: 'Papas tiernas cubiertas de cremosa salsa de ají amarillo y queso.',
+              price: 15,
+              emoji: '🥔',
+              img: 'imagenes/huancaina.webp'
+          },
+          {
+              id: 'ceviche',
+              name: 'Ceviche Clásico',
+              cat: 'entradas',
+              group: 'Para picar / Entradas',
+              desc: 'Pescado fresco en limón, con cebolla roja, camote y choclo.',
+              price: 28,
+              emoji: '🐟',
+              img: 'imagenes/ceviche.webp',
+              tag: 'Favorito'
+          },
+          {
+              id: 'tequenos',
+              name: 'Tequeños de Ají de Gallina',
+              cat: 'entradas',
+              group: 'Para picar / Entradas',
+              desc: 'Crujientes bocados rellenos de nuestro clásico guiso cremoso.',
+              price: 19,
+              emoji: '🥟',
+              img: 'imagenes/tequenos.webp'
+          },
+          {
+              id: 'lomo',
+              name: 'Lomo Saltado',
+              cat: 'fondos',
+              group: 'Criollos de siempre',
+              desc: 'Lomo de res al wok con tomate, cebolla, papas doradas y arroz.',
+              price: 32,
+              emoji: '🥩',
+              img: 'imagenes/lomo.webp',
+              tag: 'Favorito'
+          },
+          {
+              id: 'aji',
+              name: 'Ají de Gallina',
+              cat: 'fondos',
+              group: 'Criollos de siempre',
+              desc: 'Gallina deshilachada en crema de ají amarillo, papa y arroz.',
+              price: 26,
+              emoji: '🍛',
+              img: 'imagenes/aji.webp',
+              tag: 'Tradicional'
+          },
+          {
+              id: 'pato',
+              name: 'Arroz con Pato',
+              cat: 'fondos',
+              group: 'Criollos de siempre',
+              desc: 'Arroz al culantro, pato tierno y el sabor de la cocina norteña.',
+              price: 30,
+              emoji: '🍚',
+              img: 'imagenes/pato.webp'
+          },
+          {
+              id: 'seco',
+              name: 'Seco de Res con Frejoles',
+              cat: 'fondos',
+              group: 'Criollos de siempre',
+              desc: 'Carne cocida lentamente en culantro, con frejoles y arroz.',
+              price: 32,
+              emoji: '🥘',
+              img: 'imagenes/seco.webp'
+          },
+          {
+              id: 'tacu',
+              name: 'Tacu Tacu a lo Pobre',
+              cat: 'fondos',
+              group: 'Criollos de siempre',
+              desc: 'Tacu tacu dorado con bistec, huevo frito y plátano maduro.',
+              price: 34,
+              emoji: '🍳',
+              img: 'imagenes/tacu.webp'
+          },
+          {
+              id: 'anticuchos',
+              name: 'Anticuchos (6 unidades)',
+              cat: 'parrilla',
+              group: 'A las brasas / Parrilla',
+              desc: 'Corazón de res al ají panca, acompañado de papa y choclo.',
+              price: 24,
+              emoji: '🍢',
+              img: 'imagenes/anticuchos.webp',
+              tag: 'Favorito'
+          },
+          {
+              id: 'pollo',
+              name: 'Pollo a la Parrilla',
+              cat: 'parrilla',
+              group: 'A las brasas / Parrilla',
+              desc: 'Pollo jugoso marinado con especias de la casa y papas rústicas.',
+              price: 29,
+              emoji: '🍗',
+              img: 'imagenes/pollo.webp'
+          },
+          {
+              id: 'bistec',
+              name: 'Bistec a la Parrilla',
+              cat: 'parrilla',
+              group: 'A las brasas / Parrilla',
+              desc: 'Corte de res a la brasa con papas doradas y ensalada fresca.',
+              price: 38,
+              emoji: '🥩',
+              img: 'imagenes/bistec.webp'
+          },
+          {
+              id: 'suspiro',
+              name: 'Suspiro a la Limeña',
+              cat: 'postres',
+              group: 'Postres de antaño',
+              desc: 'Dulce manjar casero coronado con delicado merengue.',
+              price: 12,
+              emoji: '🍮',
+              img: 'imagenes/suspiro.webp'
+          },
+          {
+              id: 'mazamorra',
+              name: 'Mazamorra Morada',
+              cat: 'postres',
+              group: 'Postres de antaño',
+              desc: 'Maíz morado, fruta y canela en una receta de siempre.',
+              price: 10,
+              emoji: '🍇',
+              img: 'imagenes/mazamorra.webp'
+          },
+          {
+              id: 'arrozleche',
+              name: 'Arroz con Leche',
+              cat: 'postres',
+              group: 'Postres de antaño',
+              desc: 'Cremoso arroz perfumado con canela y clavo de olor.',
+              price: 11,
+              emoji: '🍚',
+              img: 'imagenes/arrozleche.webp'
+          },
+          {
+              id: 'chicha',
+              name: 'Chicha Morada',
+              cat: 'bebidas',
+              group: 'Bebidas / Pisco',
+              desc: 'Bebida tradicional de maíz morado, piña y especias.',
+              price: 8,
+              emoji: '🥤',
+              img: 'imagenes/chicha.webp'
+          },
+          {
+              id: 'pisco',
+              name: 'Pisco Sour',
+              cat: 'bebidas',
+              group: 'Bebidas / Pisco',
+              desc: 'Pisco peruano, limón, jarabe y espuma delicada.',
+              price: 20,
+              emoji: '🍸',
+              img: 'imagenes/pisco.webp'
+          },
+          {
+              id: 'maracuya',
+              name: 'Maracuyá Frozen',
+              cat: 'bebidas',
+              group: 'Bebidas / Pisco',
+              desc: 'Refrescante bebida helada de maracuyá tropical.',
+              price: 12,
+              emoji: '🍹',
+              img: 'imagenes/maracuya.webp'
+          }
+      ];
+
+      // Promociones: identificadores, nombres y precios.
+      const combos = { duo: {
+              id: 'combo-duo',
+              name: 'Combo Dúo Criollo',
+              price: 74
+          }, antojo: {
+              id: 'combo-antojo',
+              name: 'Combo Antojo Limeño',
+              price: 39
+          } };
+
+      // Configuración general y funciones auxiliares.
+      const WA = '51982492843';
+      const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+      const money = n => 'S/ ' + n.toFixed(2);
+      const imageUrl = path => path; // Fotografías locales específicas para cada plato
+      const safe = s => String(s).replace(/[&<>"']/g, c => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+
+      // Estado del carrito y almacenamiento local.
+      const storageKey = 'sazonDeBarrioCarritoV1';
+      let cart = {};
+      try {
+          const stored = JSON.parse(localStorage.getItem(storageKey) || '{}');
+          if (stored && typeof stored === 'object' && !Array.isArray(stored)) {
+              for (const [k, v] of Object.entries(stored))
+                  if (Number.isInteger(v) && v > 0 && v <= 99 && (dishes.some(d => d.id === k) || Object.values(combos).some(c => c.id === k)))
+                      cart[k] = v;
+          }
+      }
+      catch (e) { }
+      let orderMode = 'delivery', filter = 'todos', searchTerm = '', lastFocus = null, modalLink = '';
+      const allProducts = [...dishes, ...Object.values(combos)];
+      function saveCart() { try {
+          localStorage.setItem(storageKey, JSON.stringify(cart));
+      }
+      catch (e) { } renderCart(); }
+
+      // Generación de tarjetas y filtrado de la carta.
+      function cardHTML(d) { return `<article class="food-card"><div class="food-photo"><span class="fallback" aria-hidden="true">${d.emoji}</span><img src="${imageUrl(d.img)}" alt="Ilustración gastronómica de ${safe(d.name)}" loading="lazy" onerror="this.classList.add('error')">${d.tag ? `<span class="food-tag">${safe(d.tag)}</span>` : ''}</div><div class="food-body"><span class="food-category">${safe(d.group)}</span><h3>${safe(d.name)}</h3><p>${safe(d.desc)}</p><div class="food-bottom"><span class="price">${money(d.price)}</span><button class="btn btn-primary" data-add="${d.id}" aria-label="Agregar ${safe(d.name)} al carrito">Agregar +</button></div></div></article>`; }
+      function renderMenu() { const matches = dishes.filter(d => (filter === 'todos' || d.cat === filter) && (`${d.name} ${d.desc} ${d.group}`).toLowerCase().includes(searchTerm)); $('#menuGrid').innerHTML = matches.length ? matches.map(cardHTML).join('') : '<div class="no-results">No encontramos platos con esa búsqueda. Prueba con otro término.</div>'; }
+      $('#featuredGrid').innerHTML = ['ceviche', 'lomo', 'anticuchos'].map(id => cardHTML(dishes.find(d => d.id === id))).join('');
+      renderMenu();
+
+      // Navegación entre vistas sin recargar la página.
+      function navigate(view) { if (!$('#' + view)?.classList.contains('view'))
+          view = 'inicio'; $$('.view').forEach(el => { el.classList.toggle('active', el.id === view); el.setAttribute('aria-hidden', String(el.id !== view)); }); $$('.nav-btn').forEach(el => { el.classList.toggle('active', el.dataset.view === view); if (el.dataset.view === view)
+          el.setAttribute('aria-current', 'page');
+      else
+          el.removeAttribute('aria-current'); }); $('#mainNav').classList.remove('open'); $('#mobileToggle').setAttribute('aria-expanded', 'false'); if (location.hash !== '#' + view)
+          history.replaceState(null, '', '#' + view); window.scrollTo({ top: 0, behavior: 'instant' }); }
+      document.addEventListener('click', e => { const nav = e.target.closest('[data-view]'); if (nav) {
+          e.preventDefault();
+          navigate(nav.dataset.view);
+      } const add = e.target.closest('[data-add]'); if (add)
+          addCart(add.dataset.add); const combo = e.target.closest('[data-combo]'); if (combo) {
+          addCart(combos[combo.dataset.combo].id);
+      } });
+      window.addEventListener('hashchange', () => navigate(location.hash.slice(1)));
+      navigate(location.hash.slice(1) || 'inicio');
+      $('#mobileToggle').addEventListener('click', () => { const n = $('#mainNav'); const isOpen = n.classList.toggle('open'); $('#mobileToggle').setAttribute('aria-expanded', String(isOpen)); });
+      $$('#filters .filter').forEach(el => el.addEventListener('click', () => { filter = el.dataset.filter; $$('#filters .filter').forEach(b => b.classList.toggle('active', b === el)); renderMenu(); }));
+      $('#menuSearch').addEventListener('input', e => { searchTerm = e.target.value.trim().toLowerCase(); renderMenu(); });
+      /* ===== CARRITO + WHATSAPP ===== */
+      function toast(message) { const t = $('#toast'); t.textContent = message; t.classList.add('show'); clearTimeout(toast.timer); toast.timer = setTimeout(() => t.classList.remove('show'), 2600); }
+      function addCart(id) { if (!allProducts.some(d => d.id === id))
+          return; cart[id] = Math.min((cart[id] || 0) + 1, 99); saveCart(); toast('¡Agregado a tu pedido! 🛒'); }
+      function updateQty(id, diff) { const q = (cart[id] || 0) + diff; if (q <= 0)
+          delete cart[id];
+      else
+          cart[id] = Math.min(q, 99); saveCart(); }
+
+      // Cálculo de cantidades, subtotales y representación del carrito.
+      function renderCart() { let total = 0, count = 0; const rows = Object.entries(cart).map(([id, qty]) => { const d = allProducts.find(p => p.id === id); if (!d)
+          return ''; total += d.price * qty; count += qty; return `<div class="cart-item"><div><strong>${safe(d.name)}</strong><small>${money(d.price)} c/u · ${money(d.price * qty)}</small></div><div class="qty"><button data-qty="${id}" data-diff="-1" aria-label="Quitar una unidad de ${safe(d.name)}">−</button><span>${qty}</span><button data-qty="${id}" data-diff="1" aria-label="Añadir una unidad de ${safe(d.name)}">+</button></div></div>`; }).join(''); $('#cartItems').innerHTML = rows || '<div class="empty-cart"><div>🛒</div><h3>Tu carrito está vacío</h3><p>Explora la carta y elige tus favoritos.</p><button class="btn btn-outline" data-view="carta" id="emptyGoMenu">Ver la carta</button></div>'; $('#cartTotal').textContent = money(total); $('#cartCount').textContent = count; $('#checkoutBtn').disabled = !count; }
+      renderCart();
+      $('#cartItems').addEventListener('click', e => { const b = e.target.closest('[data-qty]'); if (b)
+          updateQty(b.dataset.qty, Number(b.dataset.diff)); if (e.target.closest('#emptyGoMenu')) {
+          closeLayers();
+          navigate('carta');
+      } });
+      function lock() { document.body.classList.add('lock'); $('#overlay').classList.add('show'); }
+      function unlock() { document.body.classList.remove('lock'); $('#overlay').classList.remove('show'); if (lastFocus?.focus)
+          lastFocus.focus(); }
+      function openCart() { closeLayers(false); lastFocus = document.activeElement; lock(); $('#cartDrawer').classList.add('show'); $('#cartDrawer').setAttribute('aria-hidden', 'false'); $('#cartClose').focus(); }
+      function closeLayers(restore = true) { $('#cartDrawer').classList.remove('show'); $('#cartDrawer').setAttribute('aria-hidden', 'true'); $('#bookingModal').classList.remove('show'); $('#bookingModal').setAttribute('aria-hidden', 'true'); if (restore)
+          unlock(); }
+      $('#cartTrigger').addEventListener('click', openCart);
+      $('#cartClose').addEventListener('click', () => closeLayers());
+      $('#overlay').addEventListener('click', () => closeLayers());
+      document.addEventListener('keydown', e => { if (e.key === 'Escape')
+          closeLayers(); });
+
+      // Selección de delivery o recojo.
+      function setMode(v) { orderMode = v; $$('[name="cartMode"]').forEach(r => r.checked = r.value === v); $$('[data-order-mode]').forEach(b => b.classList.toggle('active', b.dataset.orderMode === v)); $('#deliveryAddress').hidden = v !== 'delivery'; }
+      $$('[data-order-mode]').forEach(b => b.addEventListener('click', () => { setMode(b.dataset.orderMode); toast('Modalidad: ' + (orderMode === 'delivery' ? 'Delivery' : 'Recojo en local')); }));
+      $$('[name="cartMode"]').forEach(b => b.addEventListener('change', () => setMode(b.value)));
+      setMode('delivery');
+
+      // Construcción de enlaces y envío de pedidos por WhatsApp.
+      function waLink(message) { return `https://wa.me/${WA}?text=${encodeURIComponent(message)}`; }
+      function openWhatsApp(message) { window.open(waLink(message), '_blank', 'noopener,noreferrer'); }
+      $('#checkoutBtn').addEventListener('click', () => { const items = Object.entries(cart).map(([id, q]) => ({ d: allProducts.find(p => p.id === id), q })).filter(x => x.d); if (!items.length)
+          return toast('Agrega un plato primero'); const address = $('#deliveryAddress').value.trim(); if (orderMode === 'delivery' && address.length < 8) {
+          $('#deliveryAddress').focus();
+          return toast('Escribe tu dirección de delivery');
+      } const total = items.reduce((s, x) => s + x.d.price * x.q, 0); const lines = items.map(x => `• ${x.q} × ${x.d.name} — ${money(x.d.price * x.q)}`).join('\n'); const msg = `¡Hola, Sazón de Barrio! Quiero solicitar un pedido.\n\n${lines}\n\nSubtotal: ${money(total)}\nModalidad: ${orderMode === 'delivery' ? 'Delivery' : 'Recojo en local'}${orderMode === 'delivery' ? `\nDirección: ${address}` : ''}\n\nEntiendo que el costo de reparto, la disponibilidad y el total final deben ser confirmados. ¡Gracias!`; openWhatsApp(msg); });
+      /* ===== RESERVA: VALIDACIÓN + SOLICITUD SIN FALSA CONFIRMACIÓN ===== */
+      function localDateISO(date) { const y = date.getFullYear(), m = String(date.getMonth() + 1).padStart(2, '0'), d = String(date.getDate()).padStart(2, '0'); return `${y}-${m}-${d}`; }
+      const dateField = $('#fecha');
+      dateField.min = localDateISO(new Date());
+      dateField.addEventListener('change', () => { const d = new Date(dateField.value + 'T12:00:00'); if (d.getDay() === 1)
+          dateField.setCustomValidity('Los lunes no atendemos. Elige martes a domingo.');
+      else
+          dateField.setCustomValidity(''); });
+      $('#bookingForm').addEventListener('submit', e => { e.preventDefault(); const form = e.currentTarget; const d = new Date(dateField.value + 'T12:00:00'); const time = $('#hora').value; const today = localDateISO(new Date()); dateField.setCustomValidity(d.getDay() === 1 ? 'Los lunes no atendemos. Elige martes a domingo.' : dateField.value < today ? 'Elige una fecha futura o de hoy.' : ''); const timeField = $('#hora'); timeField.setCustomValidity(time < '12:00' || time > '21:30' ? 'Selecciona una hora de 12:00 a 21:30.' : ''); if (!form.reportValidity())
+          return; const data = new FormData(form); const name = String(data.get('nombre')).trim(), phone = String(data.get('telefono')).trim(); const message = `Hola, Sazón de Barrio. Quisiera *solicitar una reserva* (sujeta a confirmación).\n\nNombre: ${name}\nTeléfono: ${phone}\nCorreo: ${data.get('correo') || 'No indicado'}\nFecha: ${data.get('fecha')}\nHora: ${time}\nComensales: ${data.get('comensales')}\nOcasión: ${data.get('ocasion')}\nComentarios: ${data.get('comentarios') || 'Ninguno'}\n\n¿Podrían confirmarme si tienen disponibilidad?`; modalLink = waLink(message); lastFocus = document.activeElement; lock(); $('#modalMessage').textContent = `Solicitud para ${name}, el ${data.get('fecha')} a las ${time}. Se enviará por WhatsApp y quedará pendiente de confirmación por el restaurante.`; $('#bookingModal').classList.add('show'); $('#bookingModal').setAttribute('aria-hidden', 'false'); $('#modalSend').focus(); });
+      $('#modalCancel').addEventListener('click', () => closeLayers());
+      $('#modalSend').addEventListener('click', () => { if (modalLink)
+          window.open(modalLink, '_blank', 'noopener,noreferrer'); closeLayers(); toast('Solicitud lista para enviar en WhatsApp'); });
+    </script>
+  </body>
+</html>
