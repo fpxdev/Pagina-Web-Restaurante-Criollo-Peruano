@@ -50,10 +50,10 @@ Demostrar la aplicación práctica de los conocimientos adquiridos en desarrollo
 
 - Cómo ejecutar el proyecto
 
-Descargar el archivo ZIP.
+Descargar los archivos como ZIP.
 
 Extraer los archivos.
 
-Abrir la carpeta en VsCode.
+Abrir la carpeta en el editor de código VsCode.
 
 Es necesario contar con la extension "Live Preview", para poder visualizar la pagina correctamente con todos sus elementos y funciones.
